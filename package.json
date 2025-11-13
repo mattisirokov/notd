@@ -6,7 +6,8 @@
     "start": "expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "build-simulator": "expo prebuild --platform ios --clean && expo run:ios --simulator",
+    "build-simulator": "eas build -p ios --profile preview",
+    "run-simulator": "eas build:run -p ios --latest",
     "web": "expo start --web",
     "postinstall": "patch-package"
   },
