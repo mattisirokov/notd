@@ -15,7 +15,10 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.notd.notd"
+      "bundleIdentifier": "com.notd.notd",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -48,6 +51,38 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "build": {
+          "experimental": {
+            "ios": {
+              "appExtensions": [
+                {
+                  "targetName": "ShareExtension",
+                  "bundleIdentifier": "com.notd.notd.share-extension",
+                  "entitlements": {
+                    "com.apple.security.application-groups": [
+                      "group.com.notd.notd"
+                    ]
+                  }
+                },
+                {
+                  "targetName": "ShareExtension",
+                  "bundleIdentifier": "com.notd.notd.share-extension",
+                  "entitlements": {
+                    "com.apple.security.application-groups": [
+                      "group.com.notd.notd"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "projectId": "a048f9c9-06a4-4681-af0c-f4f76e5d0439"
+      }
     }
   }
 }
