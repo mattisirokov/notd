@@ -5,7 +5,7 @@ import { StyleSheet } from "react-native";
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Home</Text>
+      <Text style={styles.title}>HomeScreen</Text>
       <View style={styles.separator} />
       <Text style={styles.welcomeText}>Welcome to your app!</Text>
     </View>
