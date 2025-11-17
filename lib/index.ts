@@ -1,2 +1,1 @@
-export { supabase } from './supabase';
-export type { Database, User, UserInsert, UserUpdate } from './database.types';
+export { db, auth, useAuth, useQuery, useTransaction } from './instantdb';
