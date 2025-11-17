@@ -1,18 +1,16 @@
+import { Text, View } from "@/components/Themed";
+import Colors from "@/constants/Colors";
 import { useState } from "react";
 import {
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
   Alert,
   KeyboardAvoidingView,
   Platform,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
 } from "react-native";
-import { Text, View } from "@/components/Themed";
-import { useAuth } from "@/lib/instantdb";
-import { router } from "expo-router";
 
 export default function LoginScreen() {
-  const { signIn, signUp } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSignUp, setIsSignUp] = useState(false);
@@ -25,20 +23,11 @@ export default function LoginScreen() {
     }
 
     setLoading(true);
-    try {
-      if (isSignUp) {
-        await signUp({ email, password });
-        Alert.alert("Success", "Account created! Please sign in.");
-        setIsSignUp(false);
-      } else {
-        await signIn({ email, password });
-        router.replace("/(tabs)");
-      }
-    } catch (error: any) {
-      Alert.alert("Error", error.message || "Authentication failed");
-    } finally {
+    // Auth functionality will be added later
+    setTimeout(() => {
       setLoading(false);
-    }
+      Alert.alert("Info", "Authentication will be implemented later");
+    }, 500);
   };
 
   return (
@@ -51,9 +40,7 @@ export default function LoginScreen() {
           {isSignUp ? "Create Account" : "Welcome Back"}
         </Text>
         <Text style={styles.subtitle}>
-          {isSignUp
-            ? "Sign up to get started"
-            : "Sign in to continue"}
+          {isSignUp ? "Sign up to get started" : "Sign in to continue"}
         </Text>
 
         <TextInput
@@ -84,11 +71,7 @@ export default function LoginScreen() {
           disabled={loading}
         >
           <Text style={styles.buttonText}>
-            {loading
-              ? "Loading..."
-              : isSignUp
-              ? "Sign Up"
-              : "Sign In"}
+            {loading ? "Loading..." : isSignUp ? "Sign Up" : "Sign In"}
           </Text>
         </TouchableOpacity>
 
@@ -129,14 +112,17 @@ const styles = StyleSheet.create({
     opacity: 0.7,
   },
   input: {
-    backgroundColor: "#f5f5f5",
+    backgroundColor: Colors.surface,
     borderRadius: 8,
     padding: 16,
     marginBottom: 16,
     fontSize: 16,
+    borderWidth: 1,
+    borderColor: Colors.border,
+    color: Colors.text,
   },
   button: {
-    backgroundColor: "#007AFF",
+    backgroundColor: Colors.primary,
     borderRadius: 8,
     padding: 16,
     alignItems: "center",
@@ -156,7 +142,6 @@ const styles = StyleSheet.create({
   },
   switchText: {
     fontSize: 14,
-    color: "#007AFF",
+    color: Colors.primary,
   },
 });
-
